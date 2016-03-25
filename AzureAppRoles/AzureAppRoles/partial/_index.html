@@ -1,0 +1,24 @@
+﻿<div>Welcome to blog engine</div>
+<div ng-controller="authenticationController">
+    <div ng-show="userInfo.isAuthenticated">
+        <h3>
+            User token content
+        </h3>
+        <p>User Name: {{userInfo.userName}}</p>
+        <p>First name: {{userInfo.profile.given_name}}</p>
+        <p>Last name: {{userInfo.profile.family_name}}</p>
+        <p>Profile Roles:{{userInfo.profile.roles}}</p>
+        <p>Unique Identifier: {{userInfo.profile.oid}}</p>
+    </div>
+</div>
+<div ng-controller="blogController">
+    <div ng-show="userInfo.isAuthenticated && isWriter" style="margin-top: 20px">
+        <button type="button" ng-click="newblog($event)">New blog</button>
+    </div>
+    <div ng-show="userInfo.isAuthenticated  && isEditor" style="margin-top: 20px">
+        <button type="button" ng-click="reviewandpublish($event)">Review &amp; Publish blogs</button>
+    </div>
+    <div ng-show="userInfo.isAuthenticated && isAdmin" style="margin-top: 20px">
+        <button type="button" ng-click="adminapplication($event)">Admin system settings</button>
+    </div>
+</div>

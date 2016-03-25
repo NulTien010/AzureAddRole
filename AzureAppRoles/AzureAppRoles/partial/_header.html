@@ -1,0 +1,9 @@
+﻿<div class="pull-right" ng-controller="headerController">
+    <div ng-show="userInfo.isAuthenticated">
+        <div class="user">Welcome {{userInfo.profile.given_name}} {{userInfo.profile.family_name}}</div><br/>
+        <button type="button" ng-click="logout()">Logout</button>
+    </div>
+    <div ng-show="!userInfo.isAuthenticated">
+        <button type="button" ng-click="login()">Login</button>
+    </div>
+</div>
