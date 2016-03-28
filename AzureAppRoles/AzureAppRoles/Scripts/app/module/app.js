@@ -1,5 +1,4 @@
-﻿
-/** declaration of AngularJS module */
+﻿/* declaration of AngularJS module */
 // Refertence: http://stackoverflow.com/questions/19957280/angularjs-best-practices-for-module-declaration
 // NOTE: the immediately invoked function expression is used to exemplify different files and is not required
 (function() {
@@ -39,10 +38,10 @@
         $httpProvider,
         $stateProvider,
         $urlRouterProvider,
-        adalAuthenticationServiceProvider, apiUri, tenant, audience, endpoints) {
+        adalAuthenticationServiceProvider, apiUri, tenant, audience) {
 
         routes($urlRouterProvider, $stateProvider);
-        adal($httpProvider, adalAuthenticationServiceProvider, tenant, audience, endpoints);
+        adal($httpProvider, adalAuthenticationServiceProvider, tenant, audience);
 
     }
 
@@ -102,7 +101,7 @@
             });
     }
 
-    function adal($httpProvider, adalAuthenticationServiceProvider, tenant, audience, endpoints) {
+    function adal($httpProvider, adalAuthenticationServiceProvider, tenant, audience) {
         /*    ADAL    */
         // endpoint to resource mapping(optional)
         // configure AAD Authentication

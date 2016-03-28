@@ -32,6 +32,11 @@ var notify = require("gulp-notify");
 var gutil = require("gulp-util");
 var filesize = require("gulp-filesize");
 var rename = require("gulp-rename");
+var jscs = require('gulp-jscs');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
+var stylishjscs = require('gulp-jscs-stylish');
+
 
 var paths = {
     scripts: "Scripts",
@@ -69,6 +74,13 @@ gulp.task("main-bower-files", function () {
 
 gulp.task("custom", ['clean'], function () {
     return gulp.src(app)
+        .pipe(jscs({ fix: true }))
+        .pipe(stylishjscs())
+        .pipe(jscs.reporter())
+        .pipe(jscs.reporter('fail'))
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish, { verbose: true }))
+        .pipe(jshint.reporter('fail', { verbose: true }))
         .pipe(concat("main.js"))
         .pipe(gulp.dest(paths.build))
         .pipe(uglify())
